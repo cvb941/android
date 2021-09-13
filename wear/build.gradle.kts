@@ -24,6 +24,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 
     compileOptions {
@@ -60,14 +61,36 @@ android {
     lintOptions {
         disable("MissingTranslation")
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.2"
+    }
 }
 
 dependencies {
     implementation(project(":common"))
 
-    implementation("com.google.android.material:material:1.4.0")
+    // Standard Wear OS libraries
+    implementation("androidx.wear:wear:1.2.0-rc01")
+    // includes support for wearable specific inputs
+    implementation("androidx.wear:wear-input:1.1.0")
 
-    implementation("androidx.wear:wear:1.1.0")
-    implementation("com.google.android.support:wearable:2.8.1")
-    compileOnly("com.google.android.wearable:wearable:2.8.1")
+
+    // Compose
+    implementation("androidx.compose.ui:ui:1.0.2")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.0.2")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:1.0.2")
+    // Material Design
+    implementation("androidx.compose.material:material:1.0.2")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:1.0.2")
+    implementation("androidx.compose.material:material-icons-extended:1.0.2")
+
+    // Compose Wear
+    implementation("androidx.wear.compose:compose-foundation:1.0.0-alpha05")
+    // For Wear Material Design UX guidelines and specifications
+    implementation("androidx.wear.compose:compose-material:1.0.0-alpha05")
+
+
 }
